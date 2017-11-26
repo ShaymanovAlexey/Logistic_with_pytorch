@@ -67,7 +67,7 @@ total = 0
 for images, labels in test_loader:
     images = Variable(images.view(-1, 28 * 28))
     outputs = model(images)
-    predicted = torch.max(outputs.data, 1)
+    _,predicted = torch.max(outputs.data, 1)
     total += labels.size(0)
     correct += (predicted == labels).sum()
 
