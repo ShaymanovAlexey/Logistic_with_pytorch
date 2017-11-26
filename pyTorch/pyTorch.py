@@ -26,7 +26,7 @@ train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=bat
 
 test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False)
 
-
+#Create model
 class LogisticRegression(nn.Module):
     def __init__(self, input_size, num_classes):
         super(LogisticRegression, self).__init__()
@@ -70,8 +70,6 @@ for images, labels in test_loader:
     _, predicted = torch.max(outputs.data, 1)
     total += labels.size(0)
     correct += (predicted == labels).sum()
-
-print('Accuracy of the model on the 10000 test images: %d %%' % (100 * correct / total))
 
 # Save the Model
 torch.save(model.state_dict(), 'model.pkl')
