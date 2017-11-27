@@ -3,6 +3,7 @@ import torch.nn as nn
 import torchvision.datasets as dsets
 import torchvision.transforms as transforms
 from torch.autograd import Variable
+import torch.nn.functional as F
 
 # Hyper Parameters
 input_size = 784
@@ -34,6 +35,7 @@ class LogisticRegression(nn.Module):
 
     def forward(self, x):
         out = self.linear(x)
+        out = F.sigmoid(out)
         return out
 
     def name(self):
